@@ -44,7 +44,7 @@ function SetPage() {
                     secondNumber == buttonContent[x];
                     //logic to display
                     //here
-                } else (typeof(buttonContent[x]) != 'number') {
+                } else if (typeof(buttonContent[x]) != 'number') {
                     //logic to execute function
                     //here
                 }
