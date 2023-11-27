@@ -4,9 +4,43 @@ let runningTotal = 0;
 let secondNumber = 0;
 let operator = '';
 const container = document.querySelector('#buttonHolder');
-const button = document.querySelector('#gridButtons');
+const liveUpdateBox = document.querySelector('p');
 
-//-------------FUNCTIONS-------------
+//-------------PAGE SETUP-----------------
+
+SetPage();
+
+function SetPage() {
+
+
+    //populate calculator button grid
+    for (let i = 0; i < 4; i++) {
+        let buttonContent = [];
+        let row = document.createElement('div');
+        row.id = `row${i}`;
+        row.setAttribute(`class`, `gridRows`);
+        container.appendChild(row);
+        for (let x = 0; x < 4; x++) {
+            if (i == 0) {
+                buttonContent = ['7', '8', '9', '/']; 
+            } else if (i == 1) {
+                buttonContent = ['4', '5', '6', '*'];
+            } else if (i == 2) {
+                buttonContent = ['1', '2', '3', '-'];
+            } else if (i == 3) {
+                buttonContent = ['ac', '0', '.', '+'];
+            }
+            let button = document.createElement('button');
+            button.setAttribute(`class`, `rowButton`);
+            button.addEventListener("click", (event) => {
+                //
+            })
+            row.appendChild(button);
+        }
+    }
+}
+
+//-------------MATH FUNCTIONS-------------
 
 function Addition(a, b) {
     return a + b;
