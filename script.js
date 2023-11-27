@@ -33,7 +33,8 @@ function SetPage() {
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
             button.addEventListener("click", (event) => {
-                //
+                //make it do the thing
+                
             })
             row.appendChild(button);
         }
