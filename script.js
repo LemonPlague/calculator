@@ -35,7 +35,19 @@ function SetPage() {
             button.setAttribute(`class`, `rowButton`);
             button.textContent = buttonContent[x];
             button.addEventListener("click", (event) => {
-                //assign the correct integer or function to the button
+                //check conditions to update variables and display numbers
+                if (typeof(buttonContent[x]) == 'number' && runningTotal == 0) {
+                    runningTotal = buttonContent[x];
+                    //logic to display
+                    //here
+                } else if (typeof(buttonContent[x]) == 'number' && runningTotal != 0) {
+                    secondNumber == buttonContent[x];
+                    //logic to display
+                    //here
+                } else (typeof(buttonContent[x]) != 'number') {
+                    //logic to execute function
+                    //here
+                }
 
             })
             row.appendChild(button);
