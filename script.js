@@ -3,6 +3,8 @@
 let runningTotal = 0;
 let secondNumber = 0;
 let operator = '';
+const container = document.querySelector('#buttonHolder');
+const button = document.querySelector('#gridButtons');
 
 //-------------FUNCTIONS-------------
 
