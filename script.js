@@ -36,6 +36,8 @@ function SetPage() {
             button.textContent = buttonContent[x];
             button.addEventListener("click", (event) => {
                 //check conditions to update variables and display numbers
+
+                //-----THIS LOGIC NEEDS TO BE RETHOUGHT. THIS WON'T WORK---
                 if (typeof(buttonContent[x]) == 'number' && runningTotal == 0) {
                     runningTotal = buttonContent[x];
                     //logic to display
