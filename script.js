@@ -3,6 +3,8 @@
 let runningTotal = 0;
 let secondNumber = 0;
 let operator = '';
+let buttonContent = [];
+let rowCounter = 0;
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
@@ -13,48 +15,55 @@ SetPage();
 
 function SetPage() {
 
-
     //populate calculator button grid
-    for (let i = 0; i < 4; i++) {
-        let buttonContent = [];
+    for (let rowCounter = 0; rowCounter < 4; rowCounter++) {
+        
         let row = document.createElement('div');
         row.id = `row${i}`;
         row.setAttribute(`class`, `gridRows`);
         container.appendChild(row);
-        for (let x = 0; x < 4; x++) {
-            if (i == 0) {
-                buttonContent = ['7', '8', '9', '÷']; 
-            } else if (i == 1) {
-                buttonContent = ['4', '5', '6', '×'];
-            } else if (i == 2) {
-                buttonContent = ['1', '2', '3', '-'];
-            } else if (i == 3) {
-                buttonContent = ['AC', '0', '.', '+'];
-            }
+        for (let x = 0; x < 4; x++) {            
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
-            button.textContent = buttonContent[x];
-            button.addEventListener("click", (event) => {
-                //check conditions to update variables and display numbers
-
-                //-----THIS LOGIC NEEDS TO BE RETHOUGHT. THIS WON'T WORK---
-                if (typeof(buttonContent[x]) == 'number' && runningTotal == 0) {
-                    runningTotal = buttonContent[x];
-                    //logic to display
-                    //here
-                } else if (typeof(buttonContent[x]) == 'number' && runningTotal != 0) {
-                    secondNumber == buttonContent[x];
-                    //logic to display
-                    //here
-                } else if (typeof(buttonContent[x]) != 'number') {
-                    //logic to execute function
-                    //here
-                }
-
-            })
+            SetButtons(x);
             row.appendChild(button);
         }
     }
+    //populate text content for buttons
+    function SetButtons(buttonPlacement) {
+        if (rowCounter == 0) {
+            buttonContent = ['7', '8', '9', '÷']; 
+        } else if (rowCounter == 1) {
+            buttonContent = ['4', '5', '6', '×'];
+        } else if (rowCounter == 2) {
+            buttonContent = ['1', '2', '3', '-'];
+        } else if (rowCounter == 3) {
+            buttonContent = ['AC', '0', '.', '+'];
+        }
+        button.textContent = buttonContent[buttonPlacement]; 
+    }
+
+    
+
+    //Add event listeners and text content to buttons
+    button.addEventListener("click", (event) => {
+        //check conditions to update variables and display numbers
+
+        //-----THIS LOGIC NEEDS TO BE RETHOUGHT. THIS WON'T WORK---
+        if (typeof(buttonContent[x]) == 'number' && runningTotal == 0) {
+            runningTotal = buttonContent[x];
+            //logic to display
+            //here
+        } else if (typeof(buttonContent[x]) == 'number' && runningTotal != 0) {
+            secondNumber == buttonContent[x];
+            //logic to display
+            //here
+        } else if (typeof(buttonContent[x]) != 'number') {
+            //logic to execute function
+            //here
+        }
+
+    });
 }
 
 //-------------MATH FUNCTIONS-------------
