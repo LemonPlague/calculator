@@ -4,7 +4,8 @@ let runningTotal = 0;
 let secondNumber = 0;
 let operator = '';
 const container = document.querySelector('#buttonHolder');
-const liveUpdateBox = document.querySelector('p');
+const displayBox = document.querySelector('#displayBox');
+const liveUpdateBox = document.querySelector('#liveUpdate');
 
 //-------------PAGE SETUP-----------------
 
@@ -22,19 +23,20 @@ function SetPage() {
         container.appendChild(row);
         for (let x = 0; x < 4; x++) {
             if (i == 0) {
-                buttonContent = ['7', '8', '9', '/']; 
+                buttonContent = ['7', '8', '9', '÷']; 
             } else if (i == 1) {
-                buttonContent = ['4', '5', '6', '*'];
+                buttonContent = ['4', '5', '6', '×'];
             } else if (i == 2) {
                 buttonContent = ['1', '2', '3', '-'];
             } else if (i == 3) {
-                buttonContent = ['ac', '0', '.', '+'];
+                buttonContent = ['AC', '0', '.', '+'];
             }
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
+            button.textContent = buttonContent[x];
             button.addEventListener("click", (event) => {
-                //make it do the thing
-                
+                //assign the correct integer or function to the button
+
             })
             row.appendChild(button);
         }
