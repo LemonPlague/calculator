@@ -10,11 +10,10 @@ const displayBox = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
 
 //-------------PAGE SETUP-----------------
+PopulatePage();
 //--------------FUNCTIONS-----------------
 
-SetPage();
-
-function SetPage() {
+function PopulatePage() {
     //populate calculator button grid
     for (let rowCounter = 0; rowCounter < 5; rowCounter++) {        
         let row = document.createElement('div');
@@ -24,13 +23,15 @@ function SetPage() {
         for (let x = 0; x < 4; x++) {            
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
-            SetButtons(button, rowCounter, x);
+            SetButtonText(button, rowCounter, x);
+            SetButtonListeners(button);
             row.appendChild(button);
         }
     }    
 }
+
 //populate text content for buttons
-function SetButtons(button, rowCounter, buttonPlacement) {
+function SetButtonText(button, rowCounter, buttonPlacement) {
     if (rowCounter == 0) {
         buttonContent = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
@@ -43,26 +44,14 @@ function SetButtons(button, rowCounter, buttonPlacement) {
         buttonContent = ['AC', '0', '.', '='];
     }
     button.textContent = buttonContent[buttonPlacement]; 
+}
 
-    //Add event listeners and text content to buttons
-    button.addEventListener("click", (event) => {
-    //check conditions to update variables and display numbers
+//Assign function to each button push
+function SetButtonListeners(button) {
+    button.addEventListener("click", (event) => {    
 
-    //-----THIS LOGIC NEEDS TO BE RETHOUGHT. THIS WON'T WORK---
-    if (typeof(buttonContent[buttonPlacement]) == 'number' && runningTotal == 0) {
-        runningTotal = buttonContent[buttonPlacement];
-        //logic to display
-        //here
-    } else if (typeof(buttonContent[buttonPlacement]) == 'number' && runningTotal != 0) {
-        secondNumber == buttonContent[buttonPlacement];
-        //logic to display
-        //here
-    } else if (typeof(buttonContent[buttonPlacement]) != 'number') {
-        //logic to execute function
-        //here
-    }
-
-});
+    
+    });
 }
 
 
