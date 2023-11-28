@@ -23,7 +23,7 @@ function PopulatePage() {
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
             SetButtonText(button, rowCounter, x);
-            SetButtonListeners(button);
+            SetButtonListeners(button, buttonText);
             row.appendChild(button);
         }
     }    
@@ -40,15 +40,41 @@ function SetButtonText(button, rowCounter, buttonPlacement) {
     } else if (rowCounter == 3) {
         buttonText = ['1', '2', '3', '+'];
     } else if (rowCounter == 4) {
-        buttonText = ['AC', '0', '.', '='];
+        buttonText = ['69', '0', '.', '='];
     }
     button.textContent = buttonText[buttonPlacement]; 
 }
 
 //Assign function to each button push
-function SetButtonListeners(button) {
+function SetButtonListeners(button, buttonText) {
     button.addEventListener("click", (event) => {    
-
+        if (typeof(buttonText) == 'number') {
+            //logic to put that number into the displaybox
+        }
+        if (buttonText == 'AC') {
+            //link to AC function when it is complete
+        }
+        if (buttonText == 'C') {
+            //link to C function when it is complete
+        }
+        if (buttonText == '%') {
+            //link to percentage function when it is complete
+        }
+        if (buttonText == '÷') {
+            //link to division function when it is complete
+        }
+        if (buttonText == '×') {
+            //link to the multiplication function
+        }
+        if (buttonText == '-') {
+            //link to the subtraction function
+        }
+        if (buttonText == '+') {
+            //link to the addition function
+        }
+        if (buttonText == '=') {
+            //link to the equals function
+        }
     
     });
 }
