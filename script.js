@@ -16,7 +16,7 @@ SetPage();
 
 function SetPage() {
     //populate calculator button grid
-    for (let rowCounter = 0; rowCounter < 4; rowCounter++) {        
+    for (let rowCounter = 0; rowCounter < 5; rowCounter++) {        
         let row = document.createElement('div');
         row.id = `row${i}`;
         row.setAttribute(`class`, `gridRows`);
@@ -32,13 +32,15 @@ function SetPage() {
 //populate text content for buttons
 function SetButtons(button, rowCounter, buttonPlacement) {
     if (rowCounter == 0) {
-        buttonContent = ['7', '8', '9', '÷']; 
+        buttonContent = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
-        buttonContent = ['4', '5', '6', '×'];
+        buttonContent = ['7', '8', '9', '×']; 
     } else if (rowCounter == 2) {
-        buttonContent = ['1', '2', '3', '-'];
+        buttonContent = ['4', '5', '6', '-'];
     } else if (rowCounter == 3) {
-        buttonContent = ['AC', '0', '.', '+'];
+        buttonContent = ['1', '2', '3', '+'];
+    } else if (rowCounter == 4) {
+        buttonContent = ['AC', '0', '.', '='];
     }
     button.textContent = buttonContent[buttonPlacement]; 
 
