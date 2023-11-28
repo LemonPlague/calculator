@@ -1,3 +1,17 @@
+/* -----TOP DISPLAY FORMATTING----- */
+
+#displayBox {
+    width: 80%;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#liveUpdate {
+    width: 70%;
+    height: 30px;
+    border: none;
+}
 
 /* ------BUTTON FORMATTING----- */
 
