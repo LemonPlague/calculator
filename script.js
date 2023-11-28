@@ -3,8 +3,7 @@
 let runningTotal = 0;
 let secondNumber = 0;
 let operator = '';
-let buttonContent = [];
-let rowCounter = 0;
+let buttonText = [];
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
@@ -33,17 +32,17 @@ function PopulatePage() {
 //populate text content for buttons
 function SetButtonText(button, rowCounter, buttonPlacement) {
     if (rowCounter == 0) {
-        buttonContent = ['AC', 'C', '%', '÷'];
+        buttonText = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
-        buttonContent = ['7', '8', '9', '×']; 
+        buttonText = ['7', '8', '9', '×']; 
     } else if (rowCounter == 2) {
-        buttonContent = ['4', '5', '6', '-'];
+        buttonText = ['4', '5', '6', '-'];
     } else if (rowCounter == 3) {
-        buttonContent = ['1', '2', '3', '+'];
+        buttonText = ['1', '2', '3', '+'];
     } else if (rowCounter == 4) {
-        buttonContent = ['AC', '0', '.', '='];
+        buttonText = ['AC', '0', '.', '='];
     }
-    button.textContent = buttonContent[buttonPlacement]; 
+    button.textContent = buttonText[buttonPlacement]; 
 }
 
 //Assign function to each button push
