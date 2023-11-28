@@ -10,11 +10,22 @@ const liveUpdateBox = document.querySelector('#liveUpdate');
 PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
-function UpdateDisplay(string) {
-    newInput = string;
+function UpdateDisplay() {
+    displayBox.textContent = newInput;
 }
 
+function QualifyUpdateDisplay(string) {
+    if (newInput = '' && isOperator(string)) {
+        //do nothing?
+    } else {
+        newInput += string;
+    }
+    UpdateDisplay();
+}
 
+function isOperator(char) {
+    return ['+', '-', '×', '÷'].includes(char);
+}
 
 //--------BUTTON SETUP FUNCTIONS-----------
 
@@ -22,21 +33,21 @@ function PopulateButtonGrid() {
     //populate calculator button grid
     for (let rowCounter = 0; rowCounter < 5; rowCounter++) {        
         let row = document.createElement('div');
-        row.id = `row${i}`;
+        row.id = `row${rowCounter}`;
         row.setAttribute(`class`, `gridRows`);
         container.appendChild(row);
         for (let x = 0; x < 4; x++) {            
             let button = document.createElement('button');
             button.setAttribute(`class`, `rowButton`);
             SetButtonText(button, rowCounter, x);
-            SetButtonListeners(button, buttonText);
+            SetButtonListeners(button);
             row.appendChild(button);
         }
     }    
 }
 
 //populate text content for buttons
-function SetButtonText(button, rowCounter, buttonPlacement) {
+function SetButtonText(button, rowCounter, buttonPosition) {
     if (rowCounter == 0) {
         buttonText = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
@@ -48,13 +59,13 @@ function SetButtonText(button, rowCounter, buttonPlacement) {
     } else if (rowCounter == 4) {
         buttonText = ['69', '0', '.', '='];
     }
-    button.textContent = buttonText[buttonPlacement]; 
+    button.textContent = buttonText[buttonPosition]; 
 }
 
 //Assign function to each button push
-function SetButtonListeners(button, buttonText) {
+function SetButtonListeners(button) {
     button.addEventListener("click", () => { 
-        UpdateDisplay(buttonText);
+        QualifyUpdateDisplay(button.textContent);
     });
 }
 
