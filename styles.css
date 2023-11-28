@@ -1,0 +1,27 @@
+
+/* ------BUTTON FORMATTING----- */
+
+/* 4 horizontal rows into columns */
+#buttonHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* organize row container's kids: 
+4 boxes in each row stay in a row */
+.gridRows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+}
+
+/* individual boxes */
+.rowButton {
+    flex-grow: 1;
+    aspect-ratio: 1;
+    border: none;
+}

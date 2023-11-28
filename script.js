@@ -9,10 +9,11 @@ const displayBox = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
 
 //-------------PAGE SETUP-----------------
-PopulatePage();
-//--------------FUNCTIONS-----------------
+PopulateButtonGrid();
 
-function PopulatePage() {
+//--------BUTTON SETUP FUNCTIONS-----------
+
+function PopulateButtonGrid() {
     //populate calculator button grid
     for (let rowCounter = 0; rowCounter < 5; rowCounter++) {        
         let row = document.createElement('div');
@@ -74,8 +75,7 @@ function SetButtonListeners(button, buttonText) {
         }
         if (buttonText == '=') {
             //link to the equals function
-        }
-    
+        }    
     });
 }
 
