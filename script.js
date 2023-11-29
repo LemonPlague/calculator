@@ -1,6 +1,8 @@
 //-------------VARIABLES-------------
 let currentCalculation = 0;
+let firstInput = '';
 let newInput = '';
+let operator = '';
 let buttonText = [];
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#displayBox');
@@ -11,18 +13,30 @@ PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay() {
-    displayBox.textContent = newInput;
+    let value1;
+    let value2;
+    if (displayBox.textContent != ''|| displayBox.textContent == '0') {
+        displayBox.textContent = newInput;   
+    } else {
+        displayBox.textContent += newInput;
+        displayBox.textContent += operator;
+        operator = '';
+    }
+    if (displayBox.textContent.length -1 == '=') {
+        let text = displayBox.textContent;
+        let operatorUsed = text.match(/[+÷×-]/g)
+    }
 }
 
-function QualifyUpdateDisplay(string) {
-    if (newInput = '' && isOperator(string)) {
-        //do nothing?
+function QualifyUpdateDisplay(char) {
+    if (isOperator(char)) {
+        operator = char;
     } else {
-        newInput += string;
+        newInput = char;
     }
     UpdateDisplay();
 }
-
+//checks to see if the pushed button is an operator
 function isOperator(char) {
     return ['+', '-', '×', '÷'].includes(char);
 }
@@ -65,7 +79,7 @@ function SetButtonText(button, rowCounter, buttonPosition) {
 //Assign function to each button push
 function SetButtonListeners(button) {
     button.addEventListener("click", () => { 
-        QualifyUpdateDisplay(button.textContent);
+        UpdateDisplay(button.textContent);
     });
 }
 
@@ -73,18 +87,16 @@ function SetButtonListeners(button) {
 //-------------MATH FUNCTIONS-------------
 
 function MathOperations(a, b, sign) {
-    const operators = ['+', '-', '*', '/'];
-    operators.forEach((operator) => {
-        if (sign == '+') {
-            Addition(a, b);
-        } else if (sign == '-') {
-            Subtraction(a, b);
-        } else if (sign == '*') {
-            Multiplication(a, b);
-        } else if (sign == '/') {
-            Division(a, b);
-        }
-    });
+    if (sign == '+') {
+        Addition(a, b);
+    } else if (sign == '-') {
+        Subtraction(a, b);
+    } else if (sign == '*') {
+        Multiplication(a, b);
+    } else if (sign == '/') {
+        Division(a, b);
+    }
+    
 }
 
 function Addition(a, b) {
