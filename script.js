@@ -1,7 +1,8 @@
 //-------------VARIABLES-------------
 let currentCalculation = 0;
-let firstInput = '';
-let newInput = '';
+let value1 = '';
+let value2 = '';
+let input = '';
 let operator = '';
 let buttonText = [];
 const container = document.querySelector('#buttonHolder');
@@ -12,30 +13,47 @@ const liveUpdateBox = document.querySelector('#liveUpdate');
 PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
-function UpdateDisplay() {
-    let value1;
-    let value2;
-    if (displayBox.textContent != ''|| displayBox.textContent == '0') {
-        displayBox.textContent = newInput;   
+function UpdateDisplay(char) {
+    if (!isOperator(char) && char != '=') {
+        input = char;
+        displayBox.textContent += char;
+    } else if (char != '=') {
+        operator = char;
+        displayBox.textContent += char;
+        value1 = input;
+        input = '';
     } else {
-        displayBox.textContent += newInput;
-        displayBox.textContent += operator;
-        operator = '';
+        value2 = input;
+        input = '';
+        currentCalculation = MathOperations(value1, value2, operator);
+        displayBox.textContent = currentCalculation;
     }
-    if (displayBox.textContent.length -1 == '=') {
-        let text = displayBox.textContent;
-        let operatorUsed = text.match(/[+÷×-]/g)
-    }
+
+    // if (isOperator(char)) {
+    //     operator = char;
+    // } else {
+    //     newInput += char;
+    // }
+
+    // let value1;
+    // let value2;
+    // if (displayBox.textContent != ''|| displayBox.textContent == '0') {
+    //     displayBox.textContent = newInput;   
+    // } else {
+    //     displayBox.textContent += newInput;
+    //     displayBox.textContent += operator;
+    //     operator = '';
+    // }
+    // if (isOperator(displayBox.textContent.length -1)) {
+    //     value1 = displayBox.textContent.slice(0, -2);
+    //     operatorUsed = text.match(/[+÷×-]/g)
+    // } else if (displayBox.textContent.length -1 == '=') {
+    //     value2 = displayBox.textContent.slice(displayBox.textContent.search(operatorUsed), -2);
+    // }
+    // displayBox.textContent = MathOperations(value1, value2, operatorUsed);
 }
 
-function QualifyUpdateDisplay(char) {
-    if (isOperator(char)) {
-        operator = char;
-    } else {
-        newInput = char;
-    }
-    UpdateDisplay();
-}
+
 //checks to see if the pushed button is an operator
 function isOperator(char) {
     return ['+', '-', '×', '÷'].includes(char);
@@ -86,21 +104,17 @@ function SetButtonListeners(button) {
 
 //-------------MATH FUNCTIONS-------------
 
-function MathOperations(a, b, sign) {
-    if (sign == '+') {
-        Addition(a, b);
-    } else if (sign == '-') {
+function MathOperations(a, b, operator) {
+    if (operator == '+') {
+        return parseInt(a) + parseInt(b);
+    } else if (operator == '-') {
         Subtraction(a, b);
-    } else if (sign == '*') {
+    } else if (operator == '*') {
         Multiplication(a, b);
-    } else if (sign == '/') {
+    } else if (operator == '/') {
         Division(a, b);
     }
     
-}
-
-function Addition(a, b) {
-    return a + b;
 }
 
 function Subtraction(a, b) {
