@@ -15,13 +15,18 @@ PopulateButtonGrid();
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
     if (!isOperator(char) && char != '=') {
-        input = char;
+        input += char;
         displayBox.textContent += char;
-    } else if (char != '=') {
+    } else if (char != '=' && currentCalculation == '') {
         operator = char;
         displayBox.textContent += char;
         value1 = input;
         input = '';
+    } else if (char != '=' && currentCalculation != '') {
+        operator = char;
+        displayBox.textContent += char;
+        value1 = currentCalculation;
+        currentCalculation = '';
     } else {
         value2 = input;
         input = '';
