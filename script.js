@@ -1,7 +1,6 @@
 //-------------VARIABLES-------------
 let currentCalculation = 0;
 let value1 = '';
-let value2 = '';
 let input = '';
 let operator = '';
 let buttonText = [];
@@ -14,7 +13,10 @@ PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
-    //---still does not allow inputting negative numbers---
+    //-----Things that still need to be worked out-----
+    //negative numbers
+    //two consecutive operators being selected results in NaN
+    //after equals has been pressed, if the next entry is a digit, it should replace
 
     //Replace a 0 if that was the first thing entered
     if (!isOperator(char) && char != '=' && input == '0') {
@@ -62,9 +64,8 @@ function UpdateDisplay(char) {
         
     //if equals is pushed for a single calculation
     } else { 
-        value2 = input;
-        input = '';
-        currentCalculation = MathOperations(value1, value2, operator);
+        currentCalculation = MathOperations(value1, input, operator);
+        input = '';        
         displayBox.textContent = currentCalculation;
         liveUpdateBox.textContent = '';
     }
