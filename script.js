@@ -14,24 +14,45 @@ PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
-    if (!isOperator(char) && char != '=') {
+    //---still does not allow inputting negative numbers---
+
+    //Replace a 0 if that was the first thing entered
+    if (!isOperator(char) && char != '=' && input == '0') {
+        input = char;
+        displayBox.textContent = input;
+    //add digits to the first number as long as an operator HAS NOT been selected
+    } else if (!isOperator(char) && char != '=' && value1 == '') {
         input += char;
         displayBox.textContent += char;
+    //if an operator HAS been selected, add digits to the next number
+    } else if (!isOperator(char) && char != '=' && value1 != '') {
+        input += char;
+        displayBox.textContent += char;
+        liveUpdateBox.textContent = MathOperations(value1, input, operator);
+    //if input is an operator and equals HAS NOT been pushed
     } else if (char != '=' && currentCalculation == '') {
         operator = char;
         displayBox.textContent += char;
         value1 = input;
         input = '';
+    // } else if (char != '=' && currentCalculation == '' && value1 != '') {
+    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
+    //     input = '';
+    //     value1 = liveUpdateBox.textContent;
+    //     displayBox.textContent +=char;
+    //if input is an operator and equals HAS been pushed, continue the calculation
     } else if (char != '=' && currentCalculation != '') {
         operator = char;
         displayBox.textContent += char;
         value1 = currentCalculation;
         currentCalculation = '';
+    //if equals is pushed
     } else {
         value2 = input;
         input = '';
         currentCalculation = MathOperations(value1, value2, operator);
         displayBox.textContent = currentCalculation;
+        liveUpdateBox.textContent = '';
     }
 
     // if (isOperator(char)) {
