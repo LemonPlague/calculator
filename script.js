@@ -20,34 +20,47 @@ function UpdateDisplay(char) {
     if (!isOperator(char) && char != '=' && input == '0') {
         input = char;
         displayBox.textContent = input;
-    //add digits to the first number as long as an operator HAS NOT been selected
+
+    //add digits to the FIRST number as long as an operator HAS NOT been selected
     } else if (!isOperator(char) && char != '=' && value1 == '') {
         input += char;
         displayBox.textContent += char;
-    //if an operator HAS been selected, add digits to the next number
+
+    //add digits to the SECOND number for the FIRST calculation
     } else if (!isOperator(char) && char != '=' && value1 != '') {
         input += char;
         displayBox.textContent += char;
         liveUpdateBox.textContent = MathOperations(value1, input, operator);
-    //if input is an operator and equals HAS NOT been pushed
+
+    //input is a digit and this is a STRING of calculations
+    // } else if (!isOperator(char) && char != '=' && value1 != '') {
+    //     input += char;
+    //     displayBox.textContent += char;
+    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
+        
+    //OPERATOR selected for first calculation
     } else if (char != '=' && currentCalculation == '') {
         operator = char;
         displayBox.textContent += char;
         value1 = input;
         input = '';
-    // } else if (char != '=' && currentCalculation == '' && value1 != '') {
-    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
-    //     input = '';
-    //     value1 = liveUpdateBox.textContent;
-    //     displayBox.textContent +=char;
-    //if input is an operator and equals HAS been pushed, continue the calculation
+
+    //OPERATOR selected AFTER equals is pushed to continue a calculation
     } else if (char != '=' && currentCalculation != '') {
         operator = char;
         displayBox.textContent += char;
         value1 = currentCalculation;
         currentCalculation = '';
-    //if equals is pushed
-    } else {
+        input = '';
+
+    //if equals is pushed after a string of calculations
+    } else if (char == '=' && liveUpdateBox.textContent != '') {
+        displayBox.textContent = liveUpdateBox.textContent;
+        currentCalculation = liveUpdateBox.textContent;
+        liveUpdateBox.textContent = '';    
+        
+    //if equals is pushed for a single calculation
+    } else { 
         value2 = input;
         input = '';
         currentCalculation = MathOperations(value1, value2, operator);
