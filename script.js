@@ -31,21 +31,22 @@ function UpdateDisplay(char) {
         input += char;
         displayBox.textContent += char;
         liveUpdateBox.textContent = MathOperations(value1, input, operator);
-
-    //input is a digit and this is a STRING of calculations
-    // } else if (!isOperator(char) && char != '=' && value1 != '') {
-    //     input += char;
-    //     displayBox.textContent += char;
-    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
         
-    //OPERATOR selected for first calculation
-    } else if (char != '=' && currentCalculation == '') {
+    //OPERATOR selected for FIRST calculation
+    } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent == '') {
         operator = char;
         displayBox.textContent += char;
         value1 = input;
         input = '';
 
-    //OPERATOR selected AFTER equals is pushed to continue a calculation
+    //OPERATOR selected for CONSECUTIVE calculation
+    } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent != '') {
+        operator = char;
+        displayBox.textContent += char;
+        value1 = liveUpdateBox.textContent;
+        input = '';
+
+    //OPERATOR selected AFTER equals is pushed to continue ONE calculation
     } else if (char != '=' && currentCalculation != '') {
         operator = char;
         displayBox.textContent += char;
@@ -67,29 +68,7 @@ function UpdateDisplay(char) {
         displayBox.textContent = currentCalculation;
         liveUpdateBox.textContent = '';
     }
-
-    // if (isOperator(char)) {
-    //     operator = char;
-    // } else {
-    //     newInput += char;
-    // }
-
-    // let value1;
-    // let value2;
-    // if (displayBox.textContent != ''|| displayBox.textContent == '0') {
-    //     displayBox.textContent = newInput;   
-    // } else {
-    //     displayBox.textContent += newInput;
-    //     displayBox.textContent += operator;
-    //     operator = '';
-    // }
-    // if (isOperator(displayBox.textContent.length -1)) {
-    //     value1 = displayBox.textContent.slice(0, -2);
-    //     operatorUsed = text.match(/[+÷×-]/g)
-    // } else if (displayBox.textContent.length -1 == '=') {
-    //     value2 = displayBox.textContent.slice(displayBox.textContent.search(operatorUsed), -2);
-    // }
-    // displayBox.textContent = MathOperations(value1, value2, operatorUsed);
+    
 }
 
 
