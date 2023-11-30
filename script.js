@@ -106,25 +106,12 @@ function SetButtonListeners(button) {
 
 function MathOperations(a, b, operator) {
     if (operator == '+') {
-        return parseInt(a) + parseInt(b);
+        return parseFloat(a) + parseFloat(b);
     } else if (operator == '-') {
-        Subtraction(a, b);
-    } else if (operator == '*') {
-        Multiplication(a, b);
-    } else if (operator == '/') {
-        Division(a, b);
-    }
-    
-}
-
-function Subtraction(a, b) {
-    return a - b;
-}
-
-function Multiplication(a, b) {
-    return a * b;
-}
-
-function Division(a, b) {
-    return a / b;
+        return parseFloat(a) - parseFloat(b);
+    } else if (operator == '×') {
+        return parseFloat(a) * parseFloat(b);
+    } else if (operator == '÷') {
+        return parseFloat(a) / parseFloat(b);
+    }    
 }
