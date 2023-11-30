@@ -13,10 +13,13 @@ PopulateButtonGrid();
 
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
-    //-----Things that still need to be worked out-----
-    //negative numbers
-    //two consecutive operators being selected results in NaN
-    //after equals has been pressed, if the next entry is a digit, it should replace
+    //-------------TO DO------------
+    //1. negative numbers
+    //2. two consecutive operators being selected results in NaN
+    //3. after equals has been pressed, if the next entry is a digit, it should replace
+    //4. add AC function
+    //5. add a C function
+    //6. add a % function??!?!?! 
 
     //Replace a 0 if that was the first thing entered
     if (!isOperator(char) && char != '=' && input == '0') {
