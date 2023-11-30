@@ -19,6 +19,7 @@ function UpdateDisplay(char) {
     //3. after equals has been pressed, if the next entry is a digit, it should replace
     //4. add AC function
     //5. add a C function
+    //6. prevent an operator from being the first thing input
     //6. add a % function??!?!?! 
 
     //Replace a 0 if that was the first thing entered
@@ -26,10 +27,15 @@ function UpdateDisplay(char) {
         input = char;
         displayBox.textContent = input;
 
-    //add digits to the FIRST number as long as an operator HAS NOT been selected
+    //add digits or negative to the FIRST number
     } else if (!isOperator(char) && char != '=' && value1 == '') {
         input += char;
         displayBox.textContent += char;
+
+    //OPERATOR selected is MINUS directly after another operator was selected
+    // } else if (char == '-' && operator != '') {
+    //     input += char;
+    //     displayBox.textContent += char;
 
     //add digits to the SECOND number for the FIRST calculation
     } else if (!isOperator(char) && char != '=' && value1 != '') {
@@ -67,10 +73,11 @@ function UpdateDisplay(char) {
         
     //if equals is pushed for a single calculation
     } else { 
-        currentCalculation = MathOperations(value1, input, operator);
+        currentCalculation = liveUpdateBox.textContent;
         input = '';        
         displayBox.textContent = currentCalculation;
         liveUpdateBox.textContent = '';
+        operator = '';
     }
     
 }
@@ -78,7 +85,7 @@ function UpdateDisplay(char) {
 
 //checks to see if the pushed button is an operator
 function isOperator(char) {
-    return ['+', '-', '×', '÷'].includes(char);
+    return ['+', '×', '÷'].includes(char);
 }
 
 //--------BUTTON SETUP FUNCTIONS-----------
