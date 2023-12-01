@@ -27,7 +27,7 @@ function UpdateDisplay(char) {
         input = char;
         displayBox.textContent = input;
 
-    //add digits or negative to the FIRST number
+    //add digits to the FIRST number
     } else if (!isOperator(char) && char != '=' && value1 == '') {
         input += char;
         displayBox.textContent += char;
@@ -85,7 +85,7 @@ function UpdateDisplay(char) {
 
 //checks to see if the pushed button is an operator
 function isOperator(char) {
-    return ['+', '×', '÷'].includes(char);
+    return ['+', '×', '-', '÷'].includes(char);
 }
 
 //--------BUTTON SETUP FUNCTIONS-----------
