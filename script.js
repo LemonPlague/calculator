@@ -121,6 +121,7 @@ function SetButtonText(button, rowCounter, buttonPosition) {
         buttonText = ['69', '0', '.', '='];
     }
     button.textContent = buttonText[buttonPosition]; 
+    //add html class here
 }
 
 //Assign function to each button push
@@ -129,6 +130,9 @@ function SetButtonListeners(button) {
         UpdateDisplay(button.textContent);
     });
 }
+//check class first before executing update display on everything 
+//and instead run according logic
+
 
 
 //-------------MATH FUNCTIONS-------------
