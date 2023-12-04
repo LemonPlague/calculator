@@ -57,6 +57,17 @@ function UpdateDisplay(char) {
             }
         break;
 
+        case 'C':
+            let lastChar = displayBox.textContent.slice(-2, -1);
+            if (!isOperator(lastChar) && operator != '-') {
+                input = displayBox.textContent.slice(0, -1);
+                displayBox.textContent = input;
+            } else if (isOperator(lastChar) || operator == '-') {
+                displayBox.textContent = displayBox.textContent.slice(0, -1);
+                operator = '';
+            }
+        break;
+
         default:
             //for numbers
     }
