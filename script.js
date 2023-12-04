@@ -77,10 +77,34 @@ function UpdateDisplay(char) {
             currentCalculation = '';
         break;
 
+        case '=':
+            if (liveUpdateBox.textContent != '') {
+                displayBox.textContent = liveUpdateBox.textContent;
+                currentCalculation = liveUpdateBox.textContent;
+                liveUpdateBox.textContent = '';    
+                
+            //if equals is pushed for a single calculation
+            } else { 
+                currentCalculation = liveUpdateBox.textContent;
+                input = '';        
+                displayBox.textContent = currentCalculation;
+                liveUpdateBox.textContent = '';
+                operator = '';
+            }
+        break;
 
-
-        default:
-            //for numbers
+        case /[0-9.]/:
+            if (input == 0) {
+                input = char;
+                displayBox.textContent = input;
+            } else if (value1 == '') {
+                input += char;
+                displayBox.textContent += char;
+            } else if (value1 != '') {
+                input += char;
+                displayBox.textContent += char;
+                liveUpdateBox.textContent = MathOperations(value1, input, operator);
+            }
     }
 
     
@@ -130,19 +154,19 @@ function UpdateDisplay(char) {
 
     //if equals is pushed after a string of calculations
     
-    if (char == '=' && liveUpdateBox.textContent != '') {
-        displayBox.textContent = liveUpdateBox.textContent;
-        currentCalculation = liveUpdateBox.textContent;
-        liveUpdateBox.textContent = '';    
+    // if (char == '=' && liveUpdateBox.textContent != '') {
+    //     displayBox.textContent = liveUpdateBox.textContent;
+    //     currentCalculation = liveUpdateBox.textContent;
+    //     liveUpdateBox.textContent = '';    
         
-    //if equals is pushed for a single calculation
-    } else { 
-        currentCalculation = liveUpdateBox.textContent;
-        input = '';        
-        displayBox.textContent = currentCalculation;
-        liveUpdateBox.textContent = '';
-        operator = '';
-    }
+    // //if equals is pushed for a single calculation
+    // } else { 
+    //     currentCalculation = liveUpdateBox.textContent;
+    //     input = '';        
+    //     displayBox.textContent = currentCalculation;
+    //     liveUpdateBox.textContent = '';
+    //     operator = '';
+    // }
 }
 
 
