@@ -17,15 +17,13 @@ function UpdateDisplay(char) {
     //1. negative numbers
     //2. two consecutive operators being selected results in NaN
     //3. after equals has been pressed, if the next entry is a digit, it should replace
-    //4. add AC function
-    //5. add a C function
     //6. prevent an operator from being the first thing input
     //6. add a % function??!?!?! 
 
 
 
     switch (char) {
-        case /[+×÷]/:
+        case '+':
             operator = char;
             displayBox.textContent += char;
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
@@ -34,9 +32,46 @@ function UpdateDisplay(char) {
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
+            } else if (currentCalculation != '') {
+                value1 = currentCalculation;
+                currentCalculation = '';
+                input = '';
             }
         break;
 
+        case '×':
+            operator = char;
+            displayBox.textContent += char;
+            if (currentCalculation == '' && liveUpdateBox.textContent == '') {
+                value1 = input;
+                input = '';
+            } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
+                value1 = liveUpdateBox.textContent;
+                input = '';
+            } else if (currentCalculation != '') {
+                value1 = currentCalculation;
+                currentCalculation = '';
+                input = '';
+            }
+        break;
+
+        case '÷':
+            operator = char;
+            displayBox.textContent += char;
+            if (currentCalculation == '' && liveUpdateBox.textContent == '') {
+                value1 = input;
+                input = '';
+            } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
+                value1 = liveUpdateBox.textContent;
+                input = '';
+            } else if (currentCalculation != '') {
+                value1 = currentCalculation;
+                currentCalculation = '';
+                input = '';
+            }
+        break;
+
+        //negative numbers not working correctly
         case '-':
             if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent == '') {
                 operator = char;
@@ -54,9 +89,14 @@ function UpdateDisplay(char) {
             } else if (input == 0) {
                 input = char;
                 displayBox.textContent += char;
+            // } else if (currentCalculation != '') {
+            //     value1 = currentCalculation;
+            //     currentCalculation = '';
+            //     input = '';
             }
         break;
 
+        //does not remove the liveupdate text or reverse math
         case 'C':
             let lastChar = displayBox.textContent.slice(-2, -1);
             if (!isOperator(lastChar) && operator != '-') {
@@ -81,7 +121,7 @@ function UpdateDisplay(char) {
             if (liveUpdateBox.textContent != '') {
                 displayBox.textContent = liveUpdateBox.textContent;
                 currentCalculation = liveUpdateBox.textContent;
-                liveUpdateBox.textContent = '';    
+                liveUpdateBox.textContent = '';
                 
             //if equals is pushed for a single calculation
             } else { 
@@ -93,8 +133,22 @@ function UpdateDisplay(char) {
             }
         break;
 
-        case /[0-9.]/:
-            if (input == 0) {
+        case '.':
+            if (value1 == '') {
+                input += char;
+                displayBox.textContent += char;
+            } else if (value1 != '') {
+                input += char;
+                displayBox.textContent += char;
+                liveUpdateBox.textContent = MathOperations(value1, input, operator);
+            }
+        break;
+
+        case '%':
+        break;
+
+        default:
+            if (displayBox.textContent == 0) {
                 input = char;
                 displayBox.textContent = input;
             } else if (value1 == '') {
@@ -145,11 +199,11 @@ function UpdateDisplay(char) {
 
     //OPERATOR selected AFTER equals is pushed to continue ONE calculation
     // } else if (char != '=' && currentCalculation != '') {
-    //     operator = char;
-    //     displayBox.textContent += char;
-    //     value1 = currentCalculation;
-    //     currentCalculation = '';
-    //     input = '';
+        // operator = char;
+        // displayBox.textContent += char;
+        // value1 = currentCalculation;
+        // currentCalculation = '';
+        // input = '';
 
 
     //if equals is pushed after a string of calculations
@@ -199,13 +253,13 @@ function SetButtonText(button, rowCounter, buttonPosition) {
     if (rowCounter == 0) {
         buttonText = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
-        buttonText = [7, 8, 9, '×']; 
+        buttonText = ['7', '8', '9', '×']; 
     } else if (rowCounter == 2) {
-        buttonText = [4, 5, 6, '-'];
+        buttonText = ['4', '5', '6', '-'];
     } else if (rowCounter == 3) {
-        buttonText = [1, 2, 3, '+'];
+        buttonText = ['1', '2', '3', '+'];
     } else if (rowCounter == 4) {
-        buttonText = [69, 0, '.', '='];
+        buttonText = ['69', '0', '.', '='];
     }
     button.textContent = buttonText[buttonPosition]; 
     //add html class here
