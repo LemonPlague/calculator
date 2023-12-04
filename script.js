@@ -68,6 +68,17 @@ function UpdateDisplay(char) {
             }
         break;
 
+        case 'AC':
+            input = '';
+            operator = '';
+            displayBox.textContent = '';
+            liveUpdateBox.textContent = '';
+            value1 = '';
+            currentCalculation = '';
+        break;
+
+
+
         default:
             //for numbers
     }
