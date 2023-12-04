@@ -22,51 +22,93 @@ function UpdateDisplay(char) {
     //6. prevent an operator from being the first thing input
     //6. add a % function??!?!?! 
 
+
+
+    switch (char) {
+        case /[+×÷]/:
+            operator = char;
+            displayBox.textContent += char;
+            if (currentCalculation == '' && liveUpdateBox.textContent == '') {
+                value1 = input;
+                input = '';
+            } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
+                value1 = liveUpdateBox.textContent;
+                input = '';
+            }
+        break;
+
+        case '-':
+            if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent == '') {
+                operator = char;
+                displayBox.textContent += char;
+                value1 = input;
+                input = '';
+            } else if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent != '') {
+                operator = char;
+                displayBox.textContent += char;
+                value1 = liveUpdateBox.textContent;
+                input = '';
+            } else if (operator != '') {
+                input += char;
+                displayBox.textContent += char;
+            } else if (input == 0) {
+                input = char;
+                displayBox.textContent += char;
+            }
+        break;
+
+        default:
+            //for numbers
+    }
+
+    
     //Replace a 0 if that was the first thing entered
-    if (!isOperator(char) && char != '=' && input == '0') {
-        input = char;
-        displayBox.textContent = input;
+    // if (!isOperator(char) && char != '=' && input == '0') {
+    //     input = char;
+    //     displayBox.textContent = input;
+
 
     //add digits to the FIRST number
-    } else if (!isOperator(char) && char != '=' && value1 == '') {
-        input += char;
-        displayBox.textContent += char;
+    // } else if (!isOperator(char) && char != '=' && value1 == '') {
+    //     // input += char;
+    //     // displayBox.textContent += char;
 
-    //OPERATOR selected is MINUS directly after another operator was selected
-    // } else if (char == '-' && operator != '') {
-    //     input += char;
-    //     displayBox.textContent += char;
 
     //add digits to the SECOND number for the FIRST calculation
-    } else if (!isOperator(char) && char != '=' && value1 != '') {
-        input += char;
-        displayBox.textContent += char;
-        liveUpdateBox.textContent = MathOperations(value1, input, operator);
+    // } else if (!isOperator(char) && char != '=' && value1 != '') {
+    //     input += char;
+    //     displayBox.textContent += char;
+    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
+
         
     //OPERATOR selected for FIRST calculation
-    } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent == '') {
-        operator = char;
-        displayBox.textContent += char;
-        value1 = input;
-        input = '';
+    // } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent == '') {
+        // operator = char;
+        // displayBox.textContent += char;
+        // value1 = input;
+        // input = '';
 
-    //OPERATOR selected for CONSECUTIVE calculation
-    } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent != '') {
-        operator = char;
-        displayBox.textContent += char;
-        value1 = liveUpdateBox.textContent;
-        input = '';
+
+    //OPERATOR selected for CONSECUTIVE calculation 
+    // } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent != '') {
+    //     operator = char;
+    //     displayBox.textContent += char;
+    //     value1 = liveUpdateBox.textContent;
+    //     input = '';
+
 
     //OPERATOR selected AFTER equals is pushed to continue ONE calculation
-    } else if (char != '=' && currentCalculation != '') {
-        operator = char;
-        displayBox.textContent += char;
-        value1 = currentCalculation;
-        currentCalculation = '';
-        input = '';
+    // } else if (char != '=' && currentCalculation != '') {
+    //     operator = char;
+    //     displayBox.textContent += char;
+    //     value1 = currentCalculation;
+    //     currentCalculation = '';
+    //     input = '';
+
 
     //if equals is pushed after a string of calculations
-    } else if (char == '=' && liveUpdateBox.textContent != '') {
+    
+    if (char == '=' && liveUpdateBox.textContent != '') {
         displayBox.textContent = liveUpdateBox.textContent;
         currentCalculation = liveUpdateBox.textContent;
         liveUpdateBox.textContent = '';    
@@ -79,13 +121,12 @@ function UpdateDisplay(char) {
         liveUpdateBox.textContent = '';
         operator = '';
     }
-    
 }
 
 
 //checks to see if the pushed button is an operator
 function isOperator(char) {
-    return ['+', '×', '-', '÷'].includes(char);
+    return ['+', '×', '÷'].includes(char);
 }
 
 //--------BUTTON SETUP FUNCTIONS-----------
@@ -112,13 +153,13 @@ function SetButtonText(button, rowCounter, buttonPosition) {
     if (rowCounter == 0) {
         buttonText = ['AC', 'C', '%', '÷'];
     } else if (rowCounter == 1) {
-        buttonText = ['7', '8', '9', '×']; 
+        buttonText = [7, 8, 9, '×']; 
     } else if (rowCounter == 2) {
-        buttonText = ['4', '5', '6', '-'];
+        buttonText = [4, 5, 6, '-'];
     } else if (rowCounter == 3) {
-        buttonText = ['1', '2', '3', '+'];
+        buttonText = [1, 2, 3, '+'];
     } else if (rowCounter == 4) {
-        buttonText = ['69', '0', '.', '='];
+        buttonText = [69, 0, '.', '='];
     }
     button.textContent = buttonText[buttonPosition]; 
     //add html class here
