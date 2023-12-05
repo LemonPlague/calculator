@@ -17,7 +17,6 @@ function UpdateDisplay(char) {
     //-------------TO DO------------
     //2. two consecutive operators being selected results in NaN
     //3. after equals has been pressed, if the next entry is a digit, it should replace
-    //6. prevent an operator from being the first thing input
     //6. add a % function??!?!?! 
 
 
@@ -30,6 +29,8 @@ function UpdateDisplay(char) {
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            } else if (displayBox.textContent == '') {
+                //do nothing!
             } else {
                 operator = char;
                 displayBox.textContent += char;
@@ -55,6 +56,8 @@ function UpdateDisplay(char) {
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            } else if (displayBox.textContent == '') {
+                //do nothing!
             } else {
                 operator = char;
                 displayBox.textContent += char;
@@ -80,6 +83,8 @@ function UpdateDisplay(char) {
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            } else if (displayBox.textContent == '') {
+                //do nothing!
             } else {
                 operator = char;
                 displayBox.textContent += char;
