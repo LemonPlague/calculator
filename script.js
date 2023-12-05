@@ -4,6 +4,7 @@ let value1 = '';
 let input = '';
 let operator = '';
 let buttonText = [];
+let lastChar = '';
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
@@ -23,8 +24,17 @@ function UpdateDisplay(char) {
 
     switch (char) {
         case '+':
-            operator = char;
-            displayBox.textContent += char;
+            lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
+            if (isOperator(lastChar)) {
+                input = displayBox.textContent.slice(0, -1);
+                operator = char;
+                displayBox.textContent = input;
+                displayBox.textContent += char;
+            } else {
+                operator = char;
+                displayBox.textContent += char;
+            }
+            
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
@@ -39,8 +49,17 @@ function UpdateDisplay(char) {
         break;
 
         case '×':
-            operator = char;
-            displayBox.textContent += char;
+            lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
+            if (isOperator(lastChar)) {
+                input = displayBox.textContent.slice(0, -1);
+                operator = char;
+                displayBox.textContent = input;
+                displayBox.textContent += char;
+            } else {
+                operator = char;
+                displayBox.textContent += char;
+            }
+            
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
@@ -55,8 +74,17 @@ function UpdateDisplay(char) {
         break;
 
         case '÷':
-            operator = char;
-            displayBox.textContent += char;
+            lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
+            if (isOperator(lastChar)) {
+                input = displayBox.textContent.slice(0, -1);
+                operator = char;
+                displayBox.textContent = input;
+                displayBox.textContent += char;
+            } else {
+                operator = char;
+                displayBox.textContent += char;
+            }
+            
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
@@ -101,7 +129,7 @@ function UpdateDisplay(char) {
 
         //does not remove the liveupdate text or reverse math
         case 'C':
-            let lastChar = displayBox.textContent.slice(-2, -1);
+            lastChar = displayBox.textContent.slice(-2, -1);
             if (!isOperator(lastChar) && operator != '-') {
                 input = displayBox.textContent.slice(0, -1);
                 displayBox.textContent = input;
