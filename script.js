@@ -40,9 +40,11 @@ function UpdateDisplay(char) {
                 displayBox.textContent += char;
             }
             
+            //the initial operator selected after the initial number
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
+            //continue consecutive calculations without pressing equals
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
@@ -71,10 +73,12 @@ function UpdateDisplay(char) {
                 operator = char;
                 displayBox.textContent += char;
             }
-            
+
+            //the initial operator selected after the initial number
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
+            //continue consecutive calculations without pressing equals
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
@@ -103,10 +107,12 @@ function UpdateDisplay(char) {
                 operator = char;
                 displayBox.textContent += char;
             }
-            
+
+            //the initial operator selected after the initial number
             if (currentCalculation == '' && liveUpdateBox.textContent == '') {
                 value1 = input;
                 input = '';
+            //continue consecutive calculations without pressing equals
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
@@ -129,6 +135,7 @@ function UpdateDisplay(char) {
                 displayBox.textContent += char;
                 value1 = input;
                 input = '';
+            //continue consecutive calculations without pressing equals
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 operator = char;
                 displayBox.textContent += char;
