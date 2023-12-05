@@ -15,9 +15,10 @@ PopulateButtonGrid();
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
     //-------------TO DO------------
-    //1. Clear function needs to be fixed.
+    //1. backspace function needs to be fixed.
     //2. add a % function??!?!?! 
-    //3. make it so numbers appear right to left
+    //3. round answers with long decimals
+    //4. only allow one decimal per number
 
 
 
@@ -283,9 +284,6 @@ function SetButtonListeners(button) {
         UpdateDisplay(button.textContent);
     });
 }
-//check class first before executing update display on everything 
-//and instead run according logic
-
 
 
 //-------------MATH FUNCTIONS-------------
