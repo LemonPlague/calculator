@@ -46,6 +46,7 @@ function UpdateDisplay(char) {
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
+            //continue calculation after equals button was pressed
             } else if (currentCalculation != '') {
                 value1 = currentCalculation;
                 currentCalculation = '';
@@ -77,6 +78,7 @@ function UpdateDisplay(char) {
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
+            //continue calculation after equals button was pressed
             } else if (currentCalculation != '') {
                 value1 = currentCalculation;
                 currentCalculation = '';
@@ -108,6 +110,7 @@ function UpdateDisplay(char) {
             } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 value1 = liveUpdateBox.textContent;
                 input = '';
+            //continue calculation after equals button was pressed
             } else if (currentCalculation != '') {
                 value1 = currentCalculation;
                 currentCalculation = '';
@@ -139,9 +142,11 @@ function UpdateDisplay(char) {
             } else if (operator != '') {
                 operator = char;
                 displayBox.textContent += char;
+            //allow for a minus to be input after an initial zero
             }else if (input == 0) {
                 input = char;
                 displayBox.textContent += char;
+            //continue calculation after equals button was pressed
             } else if (currentCalculation != '') {
                 value1 = currentCalculation;
                 currentCalculation = '';
@@ -164,6 +169,7 @@ function UpdateDisplay(char) {
         break;
 
         case 'AC':
+            //clear every-damn-thing
             input = '';
             operator = '';
             displayBox.textContent = '';
