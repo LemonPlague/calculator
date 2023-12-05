@@ -12,13 +12,10 @@ const liveUpdateBox = document.querySelector('#liveUpdate');
 //-------------PAGE SETUP-----------------
 PopulateButtonGrid();
 
-//------------DISPLAY FUNCTIONS-------------
+//------------DISPLAY FUNCTION-------------
 function UpdateDisplay(char) {
     //-------------TO DO------------
-    //1. backspace function needs to be fixed.
-    //2. round answers with long decimals
-
-
+    //1. round answers with long decimals
 
     switch (char) {
         case '+':
@@ -171,8 +168,9 @@ function UpdateDisplay(char) {
                 displayBox.textContent = input;
             //clear any non-operator after calculations have already begun
             } else if (!isOperator(lastChar) && operator != '-' && liveUpdateBox.textContent != '') {
-                //logic here
-
+                displayBox.textContent = displayBox.textContent.slice(0, -1);
+                input = input.slice(0, -1)
+                liveUpdateBox.textContent = MathOperations(value1, input, operator);
             //clear any operator
             } else if (isOperator(lastChar) || operator == '-') {
                 displayBox.textContent = displayBox.textContent.slice(0, -1);
