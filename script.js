@@ -15,9 +15,9 @@ PopulateButtonGrid();
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
     //-------------TO DO------------
-    //2. after equals has been pressed, if the next entry is a digit, it should replace
-    //3. add a % function??!?!?! 
-    //4. make it so numbers appear right to left
+    //1. Clear function needs to be fixed.
+    //2. add a % function??!?!?! 
+    //3. make it so numbers appear right to left
 
 
 
@@ -173,20 +173,23 @@ function UpdateDisplay(char) {
         break;
 
         case '=':
-            if (liveUpdateBox.textContent != '') {
-                displayBox.textContent = liveUpdateBox.textContent;
-                currentCalculation = liveUpdateBox.textContent;
-                liveUpdateBox.textContent = '';
-                operator = '';
+            displayBox.textContent = liveUpdateBox.textContent;
+            currentCalculation = liveUpdateBox.textContent;
+            liveUpdateBox.textContent = '';
+            operator = '';
+
+            // if (liveUpdateBox.textContent != '') {
+                //pulled this code out and pasted above as this seems to be 
+                //the only case in which '=' is pushed
                 
-            //if equals is pushed for a single calculation
-            } else { 
-                currentCalculation = liveUpdateBox.textContent;
-                input = '';        
-                displayBox.textContent = currentCalculation;
-                liveUpdateBox.textContent = '';
-                operator = '';
-            }
+            // //if equals is pushed for a single calculation
+            // } else { 
+            //     currentCalculation = liveUpdateBox.textContent;
+            //     input = '';        
+            //     displayBox.textContent = currentCalculation;
+            //     liveUpdateBox.textContent = '';
+            //     operator = '';
+            // }
         break;
 
         case '.':
@@ -204,9 +207,10 @@ function UpdateDisplay(char) {
         break;
 
         default:
-            if (displayBox.textContent == 0) {
+            if (displayBox.textContent == 0 || currentCalculation != '') {
                 input = char;
                 displayBox.textContent = input;
+                currentCalculation = '';
             } else if (value1 == '') {
                 input += char;
                 displayBox.textContent += char;
@@ -216,67 +220,6 @@ function UpdateDisplay(char) {
                 liveUpdateBox.textContent = MathOperations(value1, input, operator);
             }
     }
-
-    
-    //Replace a 0 if that was the first thing entered
-    // if (!isOperator(char) && char != '=' && input == '0') {
-    //     input = char;
-    //     displayBox.textContent = input;
-
-
-    //add digits to the FIRST number
-    // } else if (!isOperator(char) && char != '=' && value1 == '') {
-    //     // input += char;
-    //     // displayBox.textContent += char;
-
-
-    //add digits to the SECOND number for the FIRST calculation
-    // } else if (!isOperator(char) && char != '=' && value1 != '') {
-    //     input += char;
-    //     displayBox.textContent += char;
-    //     liveUpdateBox.textContent = MathOperations(value1, input, operator);
-
-        
-    //OPERATOR selected for FIRST calculation
-    // } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent == '') {
-        // operator = char;
-        // displayBox.textContent += char;
-        // value1 = input;
-        // input = '';
-
-
-    //OPERATOR selected for CONSECUTIVE calculation 
-    // } else if (char != '=' && currentCalculation == '' && liveUpdateBox.textContent != '') {
-    //     operator = char;
-    //     displayBox.textContent += char;
-    //     value1 = liveUpdateBox.textContent;
-    //     input = '';
-
-
-    //OPERATOR selected AFTER equals is pushed to continue ONE calculation
-    // } else if (char != '=' && currentCalculation != '') {
-        // operator = char;
-        // displayBox.textContent += char;
-        // value1 = currentCalculation;
-        // currentCalculation = '';
-        // input = '';
-
-
-    //if equals is pushed after a string of calculations
-    
-    // if (char == '=' && liveUpdateBox.textContent != '') {
-    //     displayBox.textContent = liveUpdateBox.textContent;
-    //     currentCalculation = liveUpdateBox.textContent;
-    //     liveUpdateBox.textContent = '';    
-        
-    // //if equals is pushed for a single calculation
-    // } else { 
-    //     currentCalculation = liveUpdateBox.textContent;
-    //     input = '';        
-    //     displayBox.textContent = currentCalculation;
-    //     liveUpdateBox.textContent = '';
-    //     operator = '';
-    // }
 }
 
 
