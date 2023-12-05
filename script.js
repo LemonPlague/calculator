@@ -1,5 +1,5 @@
 //-------------VARIABLES-------------
-let currentCalculation = 0;
+let currentCalculation = '';
 let value1 = '';
 let input = '';
 let operator = '';
@@ -15,9 +15,9 @@ PopulateButtonGrid();
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
     //-------------TO DO------------
-    //2. two consecutive operators being selected results in NaN
-    //3. after equals has been pressed, if the next entry is a digit, it should replace
-    //6. add a % function??!?!?! 
+    //2. after equals has been pressed, if the next entry is a digit, it should replace
+    //3. add a % function??!?!?! 
+    //4. make it so numbers appear right to left
 
 
 
@@ -25,7 +25,7 @@ function UpdateDisplay(char) {
         case '+':
             //prevent stacking of operators
             //one operator input directly after the next will 
-            //overwrite the previous operator chosen
+            //overwrite the previously selected operator
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
@@ -56,7 +56,7 @@ function UpdateDisplay(char) {
         case '×':
             //prevent stacking of operators
             //one operator input directly after the next will 
-            //overwrite the previous operator chosen
+            //overwrite the previously selected operator
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
@@ -87,7 +87,7 @@ function UpdateDisplay(char) {
         case '÷':
             //prevent stacking of operators
             //one operator input directly after the next will 
-            //overwrite the previous operator chosen
+            //overwrite the previously selected operator
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
@@ -116,23 +116,30 @@ function UpdateDisplay(char) {
         break;
 
         case '-':
+            //add a negative symbol if minus is first selected
             if (displayBox.textContent == '') {
                 input += char;
                 displayBox.textContent += char;
+            //if minus is the first operator selected after the first number selected
             } else if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent == '') {
                 operator = char;
                 displayBox.textContent += char;
                 value1 = input;
                 input = '';
-            } else if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent != '') {
+            } else if (currentCalculation == '' && liveUpdateBox.textContent != '') {
                 operator = char;
                 displayBox.textContent += char;
                 value1 = liveUpdateBox.textContent;
                 input = '';
-            } else if (operator != '') {
+            //allows for minus to be input directly after an operator
+            } else if (operator != '' && isOperator(displayBox.textContent.charAt(displayBox.textContent.length -1))) {
                 input += char;
                 displayBox.textContent += char;
-            } else if (input == 0) {
+            //otherwise minus will be the operator
+            } else if (operator != '') {
+                operator = char;
+                displayBox.textContent += char;
+            }else if (input == 0) {
                 input = char;
                 displayBox.textContent += char;
             } else if (currentCalculation != '') {
