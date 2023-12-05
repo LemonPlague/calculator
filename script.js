@@ -70,7 +70,6 @@ function UpdateDisplay(char) {
             }
         break;
 
-        //negative numbers not working correctly
         case '-':
             if (displayBox.textContent == '') {
                 input += char;
