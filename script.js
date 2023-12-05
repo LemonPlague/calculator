@@ -16,9 +16,7 @@ PopulateButtonGrid();
 function UpdateDisplay(char) {
     //-------------TO DO------------
     //1. backspace function needs to be fixed.
-    //2. add a % function??!?!?! 
-    //3. round answers with long decimals
-    //4. only allow one decimal per number
+    //2. round answers with long decimals
 
 
 
@@ -224,7 +222,9 @@ function UpdateDisplay(char) {
             }
         break;
 
-        case '%':
+        case 'FUN':
+            input += 80085;
+            displayBox.textContent += 80085;
         break;
 
         default:
@@ -271,7 +271,7 @@ function PopulateButtonGrid() {
 //populate text content for buttons
 function SetButtonText(button, rowCounter, buttonPosition) {
     if (rowCounter == 0) {
-        buttonText = ['AC', 'C', '%', '÷'];
+        buttonText = ['AC', 'C', 'FUN', '÷'];
     } else if (rowCounter == 1) {
         buttonText = ['7', '8', '9', '×']; 
     } else if (rowCounter == 2) {
