@@ -14,7 +14,6 @@ PopulateButtonGrid();
 //------------DISPLAY FUNCTIONS-------------
 function UpdateDisplay(char) {
     //-------------TO DO------------
-    //1. negative numbers
     //2. two consecutive operators being selected results in NaN
     //3. after equals has been pressed, if the next entry is a digit, it should replace
     //6. prevent an operator from being the first thing input
@@ -73,7 +72,10 @@ function UpdateDisplay(char) {
 
         //negative numbers not working correctly
         case '-':
-            if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent == '') {
+            if (displayBox.textContent == '') {
+                input += char;
+                displayBox.textContent += char;
+            } else if (operator == '' && currentCalculation == '' && liveUpdateBox.textContent == '') {
                 operator = char;
                 displayBox.textContent += char;
                 value1 = input;
@@ -89,10 +91,12 @@ function UpdateDisplay(char) {
             } else if (input == 0) {
                 input = char;
                 displayBox.textContent += char;
-            // } else if (currentCalculation != '') {
-            //     value1 = currentCalculation;
-            //     currentCalculation = '';
-            //     input = '';
+            } else if (currentCalculation != '') {
+                value1 = currentCalculation;
+                currentCalculation = '';
+                operator = char;
+                displayBox.textContent += char;
+                input = '';
             }
         break;
 
@@ -122,6 +126,7 @@ function UpdateDisplay(char) {
                 displayBox.textContent = liveUpdateBox.textContent;
                 currentCalculation = liveUpdateBox.textContent;
                 liveUpdateBox.textContent = '';
+                operator = '';
                 
             //if equals is pushed for a single calculation
             } else { 
