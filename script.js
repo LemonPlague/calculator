@@ -215,13 +215,12 @@ function UpdateDisplay(char) {
         break;
 
         case '.':
-            if (value1 == '') {
+            //if there's already a decimal being used
+            if (input.includes('.')) {
+                //do nothing!
+            } else {
                 input += char;
                 displayBox.textContent += char;
-            } else if (value1 != '') {
-                input += char;
-                displayBox.textContent += char;
-                liveUpdateBox.textContent = MathOperations(value1, input, operator);
             }
         break;
 
