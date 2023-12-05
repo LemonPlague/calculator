@@ -166,13 +166,21 @@ function UpdateDisplay(char) {
 
         //does not remove the liveupdate text or reverse math
         case 'C':
-            lastChar = displayBox.textContent.slice(-2, -1);
-            if (!isOperator(lastChar) && operator != '-') {
+            lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);
+            //clear any non-operator character before any calculations have been made
+            if (!isOperator(lastChar) && operator != '-' && liveUpdateBox.textContent == '') {
                 input = displayBox.textContent.slice(0, -1);
                 displayBox.textContent = input;
+            //clear any non-operator after calculations have already begun
+            } else if (!isOperator(lastChar) && operator != '-' && liveUpdateBox.textContent != '') {
+                //logic here
+
+            //clear any operator
             } else if (isOperator(lastChar) || operator == '-') {
                 displayBox.textContent = displayBox.textContent.slice(0, -1);
                 operator = '';
+                value1 = displayBox.textContent;
+                input = displayBox.textContent;
             }
         break;
 
