@@ -23,12 +23,16 @@ function UpdateDisplay(char) {
 
     switch (char) {
         case '+':
+            //prevent stacking of operators
+            //one operator input directly after the next will 
+            //overwrite the previous operator chosen
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            //prevent operator from being the first thing input
             } else if (displayBox.textContent == '') {
                 //do nothing!
             } else {
@@ -50,12 +54,16 @@ function UpdateDisplay(char) {
         break;
 
         case '×':
+            //prevent stacking of operators
+            //one operator input directly after the next will 
+            //overwrite the previous operator chosen
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            //prevent operator from being the first thing input
             } else if (displayBox.textContent == '') {
                 //do nothing!
             } else {
@@ -77,12 +85,16 @@ function UpdateDisplay(char) {
         break;
 
         case '÷':
+            //prevent stacking of operators
+            //one operator input directly after the next will 
+            //overwrite the previous operator chosen
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);            
             if (isOperator(lastChar)) {
                 input = displayBox.textContent.slice(0, -1);
                 operator = char;
                 displayBox.textContent = input;
                 displayBox.textContent += char;
+            //prevent operator from being the first thing input
             } else if (displayBox.textContent == '') {
                 //do nothing!
             } else {
