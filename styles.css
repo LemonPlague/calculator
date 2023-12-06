@@ -3,7 +3,7 @@
 /* allow text to change sizes as more numbers appear on screen */
 
 body {
-    background-color: orange;
+    background-color: #ffac09;
 }
 
 
@@ -12,7 +12,7 @@ body {
 #theCalculator {
     display: flex;
     flex-direction: column;
-    background-color: steelblue;
+    background-color: rgb(151, 151, 151);
     border: 2px solid black;
     border-radius: 50px;
     height: 80%;
@@ -79,6 +79,7 @@ body {
     flex-grow: 1;
     aspect-ratio: 1;
     border: 2px solid black;
+    box-shadow: 2px 2px 1px;
     width: 70%;
     margin: 5px;
 }

@@ -264,14 +264,25 @@ function SetButtonText(button, rowCounter, buttonPosition) {
         buttonText = ['69', '0', '.', '='];
     }
     button.textContent = buttonText[buttonPosition]; 
+    button.style.backgroundColor = 'lightyellow';
     //add html class here
 }
 
 //Assign function to each button push
 function SetButtonListeners(button) {
     button.addEventListener("click", () => { 
+        button.style.backgroundColor = '#7d2ae8';
+        RevertColor(button);
         UpdateDisplay(button.textContent);
     });
+}
+
+function RevertColor(button) {
+    setTimeout(() => {
+        button.style.backgroundColor = 'lightyellow';
+        button.style.color = 'black';
+    }, 50);
+    
 }
 
 
