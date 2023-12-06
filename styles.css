@@ -1,6 +1,4 @@
-/* -----------------TO DO------------------ */
-/* fix text wrap */
-/* allow text to change sizes as more numbers appear on screen */
+
 
 body {
     background-color: #ffffff;
@@ -39,6 +37,13 @@ body {
     height: 50px;
     font-size: x-large;
     text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* ---- used to keep new input on the right side 
+while the old input is pushed off the left side */
+#floater {
+    float: right;
 }
 
 #liveUpdate {

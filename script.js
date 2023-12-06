@@ -6,7 +6,7 @@ let operator = '';
 let buttonText = [];
 let lastChar = '';
 const container = document.querySelector('#buttonHolder');
-const displayBox = document.querySelector('#displayBox');
+const displayBox = document.querySelector('#floater');
 const liveUpdateBox = document.querySelector('#liveUpdate');
 
 //-------------PAGE SETUP-----------------
