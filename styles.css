@@ -7,6 +7,10 @@
 
 /* -----TOP DISPLAY FORMATTING----- */
 
+#theCalculator {
+    background-color: chartreuse;
+}
+
 #displayBox {
     margin: auto;
     width: 80%;
