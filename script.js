@@ -5,6 +5,8 @@ let input = '';
 let operator = '';
 let buttonText = [];
 let lastChar = '';
+const audio = document.querySelector('#bewbs');
+const audio2 = document.querySelector('#noice');
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#floater');
 const liveUpdateBox = document.querySelector('#liveUpdate');
@@ -207,6 +209,8 @@ function UpdateDisplay(char) {
         case 'FUN':
             input += 80085;
             displayBox.textContent += 80085;
+            //playSound();
+            audio.play();
         break;
 
         default:
@@ -222,6 +226,8 @@ function UpdateDisplay(char) {
                 displayBox.textContent += char;
                 liveUpdateBox.textContent = MathOperations(value1, input, operator);
             }
+
+            if (char == '69') audio2.play(0);
     }
 }
 
