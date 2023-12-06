@@ -305,10 +305,16 @@ function MathOperations(a, b, operator) {
         answer = parseFloat(a) * parseFloat(b);
     } else if (operator == '÷') {
         answer = parseFloat(a) / parseFloat(b);
-    }
-
-    return answer;
+    }    
     
-    //if number's decimal is a certain length, trim it to 5 decimals
-        //return answer.toFixed(5);
+    if (hasMoreThan5Decimals(answer)) {
+        return answer.toFixed(5);
+    } else {
+        return answer;
+    }
+}
+
+function hasMoreThan5Decimals(number) {
+    const decimalPart = (number % 1).toFixed(20).split('.')[1];
+    return decimalPart && decimalPart.length > 5;
 }
