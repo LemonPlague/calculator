@@ -14,8 +14,6 @@ PopulateButtonGrid();
 
 //------------DISPLAY FUNCTION-------------
 function UpdateDisplay(char) {
-    //-------------TO DO------------
-    //1. round answers with long decimals
 
     switch (char) {
         case '+':
@@ -158,8 +156,7 @@ function UpdateDisplay(char) {
                 input = '';
             }
         break;
-
-        //does not remove the liveupdate text or reverse math
+        
         case 'C':
             lastChar = displayBox.textContent.charAt(displayBox.textContent.length -1);
             //clear any non-operator character before any calculations have been made
@@ -195,19 +192,6 @@ function UpdateDisplay(char) {
             currentCalculation = liveUpdateBox.textContent;
             liveUpdateBox.textContent = '';
             operator = '';
-
-            // if (liveUpdateBox.textContent != '') {
-                //pulled this code out and pasted above as this seems to be 
-                //the only case in which '=' is pushed
-                
-            // //if equals is pushed for a single calculation
-            // } else { 
-            //     currentCalculation = liveUpdateBox.textContent;
-            //     input = '';        
-            //     displayBox.textContent = currentCalculation;
-            //     liveUpdateBox.textContent = '';
-            //     operator = '';
-            // }
         break;
 
         case '.':
@@ -294,13 +278,18 @@ function SetButtonListeners(button) {
 //-------------MATH FUNCTIONS-------------
 
 function MathOperations(a, b, operator) {
+    let answer = '';
     if (operator == '+') {
-        return parseFloat(a) + parseFloat(b);
+        answer = parseFloat(a) + parseFloat(b);
+        return answer.toFixed(5);
     } else if (operator == '-') {
-        return parseFloat(a) - parseFloat(b);
+        answer = parseFloat(a) - parseFloat(b);
+        return answer.toFixed(5);
     } else if (operator == '×') {
-        return parseFloat(a) * parseFloat(b);
+        answer = parseFloat(a) * parseFloat(b);
+        return answer.toFixed(5);
     } else if (operator == '÷') {
-        return parseFloat(a) / parseFloat(b);
+        answer = parseFloat(a) / parseFloat(b);
+        return answer.toFixed(5);
     }    
 }
