@@ -5,10 +5,13 @@ let input = '';
 let operator = '';
 let buttonText = [];
 let lastChar = '';
+let fontResize = 0;
+const maxInputLength = 10;
 const audio = document.querySelector('#bewbs');
 const audio2 = document.querySelector('#noice');
 const container = document.querySelector('#buttonHolder');
 const displayBox = document.querySelector('#floater');
+const textControl = document.querySelector('#displayBox');
 const liveUpdateBox = document.querySelector('#liveUpdate');
 
 //-------------PAGE SETUP-----------------
@@ -207,7 +210,6 @@ function UpdateDisplay(char) {
         break;
 
         case 'FUN':
-            input += 80085;
             displayBox.textContent += 80085;
             //playSound();
             audio.play();
@@ -227,15 +229,25 @@ function UpdateDisplay(char) {
                 liveUpdateBox.textContent = MathOperations(value1, input, operator);
             }
 
-            if (char == '69') audio2.play(0);
+            if (char == '69') audio2.play();
     }
+    //resize text if the display is getting full
+    //shrinkToFill();   
 }
-
 
 //checks to see if the pushed button is an operator
 function isOperator(char) {
     return ['+', '×', '÷'].includes(char);
 }
+
+function shrinkToFill (maxInputLength, displayLength) {
+    //resize the text to shrink as the displaybox is filled up
+    //CURRENTLY NOT WORKING
+    if (displayBox.textContent > maxInputLength) {
+        //logic here
+    }
+}
+
 
 //--------BUTTON SETUP FUNCTIONS-----------
 
@@ -270,7 +282,7 @@ function SetButtonText(button, rowCounter, buttonPosition) {
         buttonText = ['69', '0', '.', '='];
     }
     button.textContent = buttonText[buttonPosition];
-    button.style.fontSize = 'x-large';
+    button.style.fontSize = 'large';
     button.style.backgroundColor = '#adefd1ff';
     //add html class here
 }
