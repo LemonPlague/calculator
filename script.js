@@ -315,6 +315,6 @@ function MathOperations(a, b, operator) {
 }
 
 function hasMoreThan5Decimals(number) {
-    const decimalPart = (number % 1).toFixed(20).split('.')[1];
+    let decimalPart = number.toString().split('.')[1];
     return decimalPart && decimalPart.length > 5;
 }
