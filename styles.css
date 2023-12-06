@@ -1,7 +1,6 @@
 /* -----------------TO DO------------------ */
-/* clean up the buttons so they don't look like shit */
-/* overhaul the UI to make it look like a legit calculator */
 /* fix text wrap */
+/* allow text to change sizes as more numbers appear on screen */
 
 body {
     background-color: orange;
@@ -34,6 +33,7 @@ body {
 
 
 #displayBox {
+    padding-top: 15px;
     margin: auto;
     width: 100%;
     height: 50px;
@@ -78,5 +78,7 @@ body {
 .rowButton {
     flex-grow: 1;
     aspect-ratio: 1;
-    border: none;
+    border: 2px solid black;
+    width: 70%;
+    margin: 5px;
 }

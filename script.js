@@ -281,15 +281,16 @@ function MathOperations(a, b, operator) {
     let answer = '';
     if (operator == '+') {
         answer = parseFloat(a) + parseFloat(b);
-        return answer.toFixed(5);
     } else if (operator == '-') {
         answer = parseFloat(a) - parseFloat(b);
-        return answer.toFixed(5);
     } else if (operator == '×') {
         answer = parseFloat(a) * parseFloat(b);
-        return answer.toFixed(5);
     } else if (operator == '÷') {
         answer = parseFloat(a) / parseFloat(b);
-        return answer.toFixed(5);
-    }    
+    }
+
+    return answer;
+    
+    //if number's decimal is a certain length, trim it to 5 decimals
+        //return answer.toFixed(5);
 }
