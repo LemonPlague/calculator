@@ -269,7 +269,8 @@ function SetButtonText(button, rowCounter, buttonPosition) {
     } else if (rowCounter == 4) {
         buttonText = ['69', '0', '.', '='];
     }
-    button.textContent = buttonText[buttonPosition]; 
+    button.textContent = buttonText[buttonPosition];
+    button.style.fontSize = 'x-large';
     button.style.backgroundColor = '#adefd1ff';
     //add html class here
 }
