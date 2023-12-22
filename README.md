@@ -1,6 +1,6 @@
 # Calculator
 
-This is a test of my Javascript, HTML, and CSS capabilities up to this point in the curriculum. HTML and CSS are not exactly the focus here though, as that will come more into focus later. The main point here is nailing the functionality of the calculator with Javascript.
+This is a test of my Javascript, HTML, and CSS capabilities up to this point in the curriculum of TheOdinProject. HTML and CSS are not exactly the focus here though, as that will come more into focus later. The main point here is nailing the functionality of the calculator with Javascript.
 
 # Functionality
 
